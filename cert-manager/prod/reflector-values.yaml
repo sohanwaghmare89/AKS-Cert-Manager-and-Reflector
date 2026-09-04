@@ -1,0 +1,3 @@
+# reflector prod – no overrides (chart defaults)
+# Add overrides below if needed, e.g. replicaCount, resources
+replicaCount: 1
