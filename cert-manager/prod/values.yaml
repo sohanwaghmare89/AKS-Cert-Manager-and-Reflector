@@ -1,0 +1,6 @@
+# cert-manager prod values
+crds:
+  enabled: true
+
+serviceAccount:
+  name: cert-manager-sa
