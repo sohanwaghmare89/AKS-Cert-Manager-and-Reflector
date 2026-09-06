@@ -1,0 +1,18 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: mydomain-wildcard
+  namespace: cert-manager
+spec:
+  secretName: mydomain-tls
+  issuerRef:
+    name: letsencrypt-stg
+    kind: ClusterIssuer
+  commonName: "*.mydomain.com"
+  dnsNames:
+    - "*.mydomain.com"
+    - "mydomain.com"           
+  secretTemplate:
+    annotations:
+      reflector.v1.k8s.emberstack.com/reflection-allowed: "true"    
+      reflector.v1.k8s.emberstack.com/reflection-auto-enabled: "true" # Auto-sync to all namespaces
