@@ -1,1 +1,7 @@
 
+# cert-manager qa values
+crds:
+  enabled: true
+
+serviceAccount:
+  name: cert-manager-sa
