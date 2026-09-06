@@ -1,0 +1,2 @@
+# reflector qa – chart defaults; add overrides as needed
+replicaCount: 1
