@@ -1,0 +1,32 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-qa
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: email@mydomain.tech 
+    privateKeySecretRef:
+      name: letsencrypt-qa-account-key
+    solvers:
+      # Solver for aurainsure.tech in Cloudflare  (current account)
+      - selector:
+          dnsZones:
+            - "mydomain.tech"
+        dns01:
+          cloudflare:
+            email: email@mydomain.tech
+            apiTokenSecretRef:
+              name: cloudflare-api-token-secret
+              key: api-token
+
+      # Solver for aurainsure.ai in Cloudflare (same AWS account as aurainsure.tech)
+      - selector:
+          dnsZones:
+            - "mydomain.com"
+        dns01:
+          cloudflare:
+            email: email@mydomain.tech
+            apiTokenSecretRef:
+              name: cloudflare-api-token-secret
+              key: api-token
