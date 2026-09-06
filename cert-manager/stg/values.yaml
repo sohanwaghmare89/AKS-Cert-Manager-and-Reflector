@@ -1,1 +1,6 @@
-
+# cert-manager stg values – customize as needed
+crds:
+  enabled: true
+  
+serviceAccount:
+  name: cert-manager-sa
